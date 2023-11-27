@@ -1,0 +1,9 @@
+{
+  "connectorId": "shared_templafy-20docgen-5fc87a6cd518d75624-5fc9b0f1ad3aa2b988",
+  "environment": "Default-6efd9fb8-7041-44bd-8c2a-b8c9d12a38b3",
+  "apiProperties": "apiProperties.json",
+  "apiDefinition": "apiDefinition.swagger.json",
+  "icon": "icon.png",
+  "powerAppsUrl": "https://api.powerapps.com",
+  "powerAppsApiVersion": "2016-11-01"
+}

@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Templafy DocGen",
+    "description": "Short description goes here",
+    "version": "1.1"
+  },
+  "host": "api.templafy.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/libraries/{spaceId}/{templateType}/assets/{assetId}/generate": {
+      "post": {
+        "summary": "Generate a document from a template",
+        "description": "Creates a file from the template. You can create docx, pptx, xlsx and PDF files",
+        "operationId": "GenerateDocument",
+        "parameters": [
+          {
+            "name": "spaceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "templateType",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "description": "email"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "data"
+                },
+                "includePdf": {
+                  "type": "boolean",
+                  "description": "Specify if a PDF should be created",
+                  "title": "includePdf",
+                  "format": "boolean",
+                  "enum": [
+                    true,
+                    false
+                  ],
+                  "default": false
+                }
+              },
+              "x-ms-visibility": "important",
+              "required": [
+                "includePdf"
+              ]
+            },
+            "x-ms-visibility": "important"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "downloadUrl": {
+                  "type": "string",
+                  "description": "downloadUrl"
+                },
+                "fileSize": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "fileSize",
+                  "title": ""
+                },
+                "checksum": {
+                  "type": "string",
+                  "description": "checksum"
+                },
+                "mimeType": {
+                  "type": "string",
+                  "description": "mimeType"
+                },
+                "fileExtension": {
+                  "type": "string",
+                  "description": "fileExtension"
+                },
+                "pdfDownloadUrl": {
+                  "type": "string",
+                  "description": "pdfDownloadUrl"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "API Key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ],
+  "tags": []
+}
