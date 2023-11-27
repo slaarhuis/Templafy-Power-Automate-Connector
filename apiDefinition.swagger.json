@@ -31,7 +31,13 @@
             "name": "templateType",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "documents",
+              "presentations",
+              "spreadsheets",
+              "text-elements"
+            ]
           },
           {
             "name": "assetId",
@@ -102,10 +108,7 @@
                   "description": "downloadUrl"
                 },
                 "fileSize": {
-                  "type": "integer",
-                  "format": "int64",
-                  "description": "fileSize",
-                  "title": ""
+                  "description": "fileSize"
                 },
                 "checksum": {
                   "type": "string",
