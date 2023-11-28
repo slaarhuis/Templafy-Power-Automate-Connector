@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Templafy DocGen",
+    "title": "Templafy",
     "description": "Automate the transformation of data into various document formats, presentations, spreadsheets, or PDFs effortlessly. Templafy empowers document automation by leveraging the flexible capabilities found in Microsoft 365 templates for applications like Word, PowerPoint, and Excel. The outcome can range from impeccably customized documents to the creation of PDF files.",
     "version": "1.0"
   },
@@ -18,7 +18,7 @@
     "/libraries/{spaceId}/{templateType}/assets/{assetId}/generate": {
       "post": {
         "summary": "Generate a document",
-        "description": "Creates a file from the template. You can create docx, pptx, xlsx and PDF files",
+        "description": "Creates a file from a template. You can create docx, pptx, xlsx and PDF files",
         "operationId": "GenerateDocument",
         "parameters": [
           {
@@ -36,8 +36,8 @@
             "enum": [
               "documents",
               "presentations",
-              "spreadsheets",
-              "text-elements"
+              "text-elements",
+              "spreadsheets"
             ],
             "x-ms-summary": "Template type"
           },
@@ -80,21 +80,21 @@
                 "data": {
                   "type": "object",
                   "properties": {},
-                  "default": {},
+                  "title": "Data",
                   "x-ms-visibility": "important",
-                  "title": "Data"
+                  "default": {}
                 },
                 "includePdf": {
                   "type": "boolean",
-                  "description": "Specify if a PDF should be created",
-                  "title": "Generate PDF?",
+                  "description": "",
+                  "title": "Include PDF?",
                   "format": "boolean",
                   "enum": [
                     true,
                     false
                   ],
-                  "default": false,
-                  "x-ms-visibility": "important"
+                  "x-ms-visibility": "important",
+                  "default": false
                 }
               },
               "x-ms-visibility": "important",
@@ -113,24 +113,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "downloadUrl": {
-                  "type": "string",
-                  "description": "downloadUrl"
-                },
-                "fileSize": {
-                  "description": "fileSize"
-                },
                 "checksum": {
                   "type": "string",
                   "description": "checksum"
                 },
-                "mimeType": {
+                "downloadUrl": {
                   "type": "string",
-                  "description": "mimeType"
+                  "description": "downloadUrl"
                 },
                 "fileExtension": {
                   "type": "string",
                   "description": "fileExtension"
+                },
+                "fileSize": {
+                  "type": "string",
+                  "description": "fileSize"
+                },
+                "mimeType": {
+                  "type": "string",
+                  "description": "mimeType"
                 },
                 "pdfDownloadUrl": {
                   "type": "string",
