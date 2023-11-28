@@ -12,3 +12,4 @@ https://philcole.org/post/environment-specific-custom-connector-endpoints/
 5. Enter paconn create --api-prop .\apiProperties.json --api-def .\apiDefinition.swagger.json
 6. Select the right environment
 7. Connector is created on your own tenant, find the connector in https://make.powerapps.com/ under 'Custom connectors' in the navigation bar on the left
+8. Edit the connector settings. Upload the logo as part of this package.
