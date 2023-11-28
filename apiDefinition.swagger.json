@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "title": "Templafy DocGen",
-    "description": "Short description goes here",
-    "version": "1.1"
+    "description": "Automate the transformation of data into various document formats, presentations, spreadsheets, or PDFs effortlessly. Templafy empowers document automation by leveraging the flexible capabilities found in Microsoft 365 templates for applications like Word, PowerPoint, and Excel. The outcome can range from impeccably customized documents to the creation of PDF files.",
+    "version": "1.0"
   },
   "host": "api.templafy.com",
   "basePath": "/",
@@ -17,7 +17,7 @@
   "paths": {
     "/libraries/{spaceId}/{templateType}/assets/{assetId}/generate": {
       "post": {
-        "summary": "Generate a document from a template",
+        "summary": "Generate a document",
         "description": "Creates a file from the template. You can create docx, pptx, xlsx and PDF files",
         "operationId": "GenerateDocument",
         "parameters": [
@@ -25,7 +25,8 @@
             "name": "spaceId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-summary": "Space ID"
           },
           {
             "name": "templateType",
@@ -37,13 +38,15 @@
               "presentations",
               "spreadsheets",
               "text-elements"
-            ]
+            ],
+            "x-ms-summary": "Template type"
           },
           {
             "name": "assetId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-summary": "Asset ID"
           },
           {
             "name": "Content-Type",
@@ -70,28 +73,35 @@
               "properties": {
                 "email": {
                   "type": "string",
-                  "description": "email"
+                  "description": "Email address of the Templafy user",
+                  "title": "Email",
+                  "x-ms-visibility": "important"
                 },
                 "data": {
                   "type": "object",
                   "properties": {},
-                  "description": "data"
+                  "default": {},
+                  "x-ms-visibility": "important",
+                  "title": "Data"
                 },
                 "includePdf": {
                   "type": "boolean",
                   "description": "Specify if a PDF should be created",
-                  "title": "includePdf",
+                  "title": "Generate PDF?",
                   "format": "boolean",
                   "enum": [
                     true,
                     false
                   ],
-                  "default": false
+                  "default": false,
+                  "x-ms-visibility": "important"
                 }
               },
               "x-ms-visibility": "important",
               "required": [
-                "includePdf"
+                "includePdf",
+                "email",
+                "data"
               ]
             },
             "x-ms-visibility": "important"
@@ -125,6 +135,67 @@
                 "pdfDownloadUrl": {
                   "type": "string",
                   "description": "pdfDownloadUrl"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "description": "errors"
+                },
+                "type": {
+                  "description": "type"
+                },
+                "title": {
+                  "description": "title"
+                },
+                "status": {
+                  "description": "status"
+                },
+                "detail": {
+                  "description": "detail"
+                },
+                "instance": {
+                  "description": "instance"
+                },
+                "traceId": {
+                  "description": "traceId"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401"
+          },
+          "403": {
+            "description": "403"
+          },
+          "404": {
+            "description": "404",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "type"
+                },
+                "title": {
+                  "description": "title"
+                },
+                "status": {
+                  "description": "status"
+                },
+                "detail": {
+                  "description": "detail"
+                },
+                "instance": {
+                  "description": "instance"
+                },
+                "traceId": {
+                  "description": "traceId"
                 }
               }
             }
